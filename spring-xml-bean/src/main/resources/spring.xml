@@ -4,9 +4,19 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="userService" class="com.maguasoft.spring.beans.service.impl.UserServiceImpl">
+    <bean id="userService" class="com.maguasoft.spring.beans.service.impl.UserServiceImpl"
+          init-method="initMethod" destroy-method="destroyMethod" >
         <property name="userMapper" ref="userMapper"/>
     </bean>
 
     <bean id="userMapper" class="com.maguasoft.spring.beans.dao.UserMapper"/>
+
+    <!-- Bean工厂后置处理器 -->
+    <bean class="com.maguasoft.spring.beans.MyBeanFactoryPostProcessor"/>
+    <!-- BeanDefinition Registry 工厂后置处理器 -->
+    <bean class="com.maguasoft.spring.beans.MyBeanDefinitionRegistryPostProcessor"/>
+
+    <!-- Bean后置处理器 -->
+<!--    <bean class="com.maguasoft.spring.beans.MyInstantiationAwareBeanPostProcessor"/>-->
+    <bean class="com.maguasoft.spring.beans.MyBeanPostProcessor"/>
 </beans>
