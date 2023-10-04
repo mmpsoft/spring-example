@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://www.maguasoft.com/schema/magua"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.maguasoft.com/schema/magua">
+    <xsd:element name="property-placeholder"/>
+</xsd:schema>
+
+<!--<xsd:schema xmlns="http://www.maguasoft.com/schema/magua"-->
+<!--            xmlns:xsd="http://www.w3.org/2001/XMLSchema"-->
+<!--            targetNamespace="http://www.maguasoft.com/schema/magua"-->
+<!--            elementFormDefault="qualified">-->
+<!--    &lt;!&ndash; 注释 3.4 自定义元素  &ndash;&gt;-->
+<!--    <xsd:element name="property-placeholder"/>-->
+<!--</xsd:schema>-->
