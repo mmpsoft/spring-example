@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements ApplicationContextAware {
 
+    /**
+     * ApplicationContext继承了ApplicationEventPublisher接口，有发布事件能力。
+     */
     private ApplicationContext applicationContext;
 
     public void login() {

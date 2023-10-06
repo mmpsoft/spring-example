@@ -3,8 +3,6 @@ package com.maguasoft.spring.pubsub;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import java.util.concurrent.TimeUnit;
-
 public class UserServiceImplTest {
 
     @Test

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="userService" class="com.maguasoft.spring.aop.UserServiceImpl"/>
+
+    <!-- 通知 -->
+    <bean id="loggerAdvice" class="com.maguasoft.spring.aop.LoggerAdvice" />
+
+    <!--  aop配置  -->
+    <aop:config>
+        <!-- 切入点 -->
+        <aop:pointcut id="myPointcut" expression="execution(* com.maguasoft.spring..* (..))"/>
+        <!-- 配置切面，组织切入点和通知一一对应 -->
+        <aop:aspect ref="loggerAdvice">
+            <!-- 使用myPointcut切入点，在执行方法前，执行beforeLogger增强方法 -->
+            <aop:before method="beforeLogger" pointcut-ref="myPointcut"/>
+            <!-- 使用myPointcut切入点，在执行方法后，执行afterLogger增强方法 -->
+            <aop:after method="afterLogger" pointcut-ref="myPointcut"/>
+        </aop:aspect>
+    </aop:config>
+</beans>
