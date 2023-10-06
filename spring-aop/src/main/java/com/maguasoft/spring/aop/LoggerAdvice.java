@@ -1,12 +1,24 @@
 package com.maguasoft.spring.aop;
 
+import org.aspectj.lang.ProceedingJoinPoint;
+
 public class LoggerAdvice {
 
-    public void beforeLogger() {
-        System.out.println("before增强");
+    public void before() {
+        System.out.println("before");
     }
-
-    public void afterLogger() {
-        System.out.println("after增强");
+    public void afterReturning() {
+        System.out.println("afterReturning");
+    }
+    public void afterThrowing() {
+        System.out.println("afterThrowing");
+    }
+    public void around(ProceedingJoinPoint joinPoint) throws Throwable {
+        System.out.println("around-before");
+        joinPoint.proceed(joinPoint.getArgs());
+        System.out.println("around-after");
+    }
+    public void after() {
+        System.out.println("after");
     }
 }
