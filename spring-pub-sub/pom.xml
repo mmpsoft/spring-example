@@ -5,13 +5,13 @@
         <groupId>com.maguasoft.spring.example</groupId>
         <artifactId>spring-example</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>spring-xml-bean</artifactId>
+    <groupId>com.maguasoft.spring.pubsub</groupId>
+    <artifactId>spring-pub-sub</artifactId>
     <packaging>jar</packaging>
 
-    <name>spring-xml-bean</name>
+    <name>spring-pub-sub</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -26,18 +26,6 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis-spring</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>dubbo</artifactId>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
