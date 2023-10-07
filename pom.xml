@@ -17,6 +17,7 @@
     <module>spring-pub-sub</module>
     <module>spring-aop</module>
       <module>spring-annotated-aop</module>
+      <module>spring-import</module>
   </modules>
 
   <properties>
