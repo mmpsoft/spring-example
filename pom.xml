@@ -16,6 +16,7 @@
     <module>spring-custom-namespace</module>
     <module>spring-pub-sub</module>
     <module>spring-aop</module>
+      <module>spring-annotated-aop</module>
   </modules>
 
   <properties>
