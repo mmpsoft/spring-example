@@ -22,7 +22,6 @@ public class LoggerAdvice {
 //    @Before("execution(* com.maguasoft.spring..* (..))")
     public void before(JoinPoint joinPoint) {
         System.out.println("LoggerAdvice.before");
-        System.out.printf("LoggerAdvice.before, %s-%s \n", joinPoint.getTarget(), joinPoint.getSignature());
     }
 
     @AfterReturning("execution(* com.maguasoft.spring..* (..))")
