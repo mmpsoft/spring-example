@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        https://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <bean id="fooService" class="com.maguasoft.spring.tx.impl.FooServiceImpl">
+        <property name="jdbcTemplate" ref="jdbcTemplate" />
+        <property name="accountService" ref="accountService" />
+    </bean>
+
+    <bean id="accountService" class="com.maguasoft.spring.tx.impl.AccountServiceImpl">
+        <constructor-arg name="jdbcTemplate" ref="jdbcTemplate" />
+    </bean>
+
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <constructor-arg name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- don't forget the DataSource -->
+    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://172.27.153.46:3306/maguasoft?allowPublicKeyRetrieval=true&amp;useSSL=false"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </bean>
+
+    <!-- similarly, don't forget the TransactionManager -->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- the transactional advice (what 'happens'; see the <aop:advisor/> bean below) -->
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <!-- the transactional semantics... -->
+        <tx:attributes>
+            <!-- all methods starting with 'get' are read-only -->
+            <tx:method name="get*" read-only="true"/>
+            <!-- other methods use the default transaction settings (see below) -->
+            <tx:method name="save" />
+            <tx:method name="update" propagation="REQUIRES_NEW"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- ensure that the above transactional advice runs for any execution
+        of an operation defined by the FooService interface -->
+    <aop:config>
+        <aop:pointcut id="txPointcut" expression="execution(* com.maguasoft.spring.tx..* (..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
+    </aop:config>
+</beans>
