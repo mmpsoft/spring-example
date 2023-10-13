@@ -20,6 +20,7 @@
     <module>spring-import</module>
     <module>spring-tx</module>
     <module>spring-annotated-tx</module>
+    <module>spring-webmvc</module>
   </modules>
 
   <properties>
@@ -85,6 +86,12 @@
         <groupId>org.springframework</groupId>
         <artifactId>spring-jdbc</artifactId>
         <version>5.3.23</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>javax.servlet-api</artifactId>
+        <version>4.0.1</version>
+<!--        <scope>provided</scope>-->
       </dependency>
       <!-- SLF4J -->
       <dependency>
