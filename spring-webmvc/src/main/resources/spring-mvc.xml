@@ -43,4 +43,9 @@
     </mvc:interceptors>
 
     <mvc:annotation-driven/>
+
+    <!-- 静态资源配置 -->
+    <mvc:default-servlet-handler/>
+    <!--<mvc:resources mapping="images" location="/pics" />-->
+
 </beans>

@@ -21,6 +21,7 @@
     <module>spring-tx</module>
     <module>spring-annotated-tx</module>
     <module>spring-webmvc</module>
+      <module>spring-annotated-webmvc</module>
   </modules>
 
   <properties>
@@ -138,6 +139,11 @@
         <artifactId>lombok</artifactId>
         <version>1.18.22</version>
         <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>commons-fileupload</groupId>
+        <artifactId>commons-fileupload</artifactId>
+        <version>1.5</version>
       </dependency>
       <dependency>
         <groupId>junit</groupId>
