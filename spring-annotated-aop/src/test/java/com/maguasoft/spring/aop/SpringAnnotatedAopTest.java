@@ -20,4 +20,11 @@ public class SpringAnnotatedAopTest {
         UserService userService = applicationContext.getBean(UserService.class);
         userService.apply();
     }
+
+    @Test
+    public void testAnnotatedAop3() {
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringConfig.class);
+        UserService userService = applicationContext.getBean(UserService.class);
+        userService.testAnnotation();
+    }
 }

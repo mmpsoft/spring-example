@@ -7,4 +7,9 @@ public class UserService {
     public void apply() {
         System.out.println("UserService.apply");
     }
+
+    @TestAnnotation
+    public void testAnnotation() {
+        System.out.println("UserService.testAnnotation");
+    }
 }
